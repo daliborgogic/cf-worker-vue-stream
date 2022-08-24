@@ -42,7 +42,7 @@ export async function render(url, manifest, template) {
   await router.isReady()
   const ctx = {}
   // await renderToString(app) // Workaround to get head  <meta name="head:count" content="0"> 
-  const { headTags } =  renderHeadToString(head)
+  const { headTags } = renderHeadToString(head)
   // console.log('headTags', headTags)
 
   const tmpl = template.split('<!--app-->')
