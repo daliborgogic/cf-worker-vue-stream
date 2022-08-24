@@ -11,11 +11,11 @@ configure({ trickle: false, showSpinner: false })
     <RouterView v-slot="{ Component, route }">
       <template v-if="Component">
         <Transition name="fade" mode="out-in">
-          <KeepAlive>
+          <!-- <KeepAlive> -->
           <Suspense @pending="start" @resolve="done">
             <Component :is="Component" :key="route.path" />
           </Suspense>
-          </KeepAlive>
+          <!-- </KeepAlive> -->
         </Transition>
       </template>
     </RouterView>
@@ -29,6 +29,12 @@ configure({ trickle: false, showSpinner: false })
   --color: 0 0 0;
   --gap: 24px;
   --max-width: 1280px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: 255 255 255;
+    --background-color: 0 0 0;
+  }
 }
 *:where(:not(html, iframe, img, svg, video):not(svg *, symbol *)) {
   all: unset;

@@ -1,12 +1,27 @@
 <script setup>
-const x = await (await fetch('https://randomuser.me/api/')).json()
+import { computed } from 'vue'
+import { useHead } from '@vueuse/head'
+
+const users = await (await fetch('https://randomuser.me/api/')).json()
+// const y = JSON.stringify(users, null, 2)
+
+useHead({
+  // title: 'About'
+  title: computed(() => `About ${users.results[0].name.title} ${users.results[0].name.first} ${users.results[0].name.last}`),
+  meta: [
+    {
+      name: 'description',
+      content: computed(() => `${users.results[0].gender}`)
+    }
+  ]
+})
 </script>
 
 <template>
   <div class="wrapper">
     About
-    <pre v-if="x">
-{{  x }}
+    <pre v-if="users">
+{{ users?.results }}
     </pre>
   </div>
 </template>

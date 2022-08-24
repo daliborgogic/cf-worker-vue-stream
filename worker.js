@@ -2,6 +2,7 @@ import template from './dist/client/template.html'
 import manifest from './dist/client/ssr-manifest.json'
 import { createApp } from './dist/server/main.js'
 import { pipeToWebWritable } from 'vue/server-renderer'
+import { renderHeadToString } from '@vueuse/head'
 
 globalThis.__VUE_OPTIONS_API__ = false
 globalThis.__VUE_PROD_DEVTOOLS__ = false
@@ -43,12 +44,18 @@ async function handleRequest(request) {
   const { pathname } = new URL(request.url)
 
   let ctx = {}
-  let { app, router } = createApp(ctx)
+  let { app, router, head } = createApp()
 
   router.push(pathname)
   await router.isReady()
 
-  const [prepend, append] = template.split('<!--app-->')
+  const { headTags } = renderHeadToString(head)
+  const tmpl = template.split('<!--app-->')
+  const prepend = tmpl[0].replace('<!--head-->', headTags)
+  const append = tmpl[1]
+ 
+  console.log('headTags ' , headTags)
+ 
   const encoder = new TextEncoder()
 
   const { readable, writable } = new TransformStream({

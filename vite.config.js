@@ -10,7 +10,7 @@ export default {
     splitVendorChunkPlugin()
   ],
   resolve: {
-    dedupe: ['vue', 'vue-router'],
+    dedupe: ['vue', 'vue-router', '@vueuse/head'],
   },
   build: {
     minify: true
