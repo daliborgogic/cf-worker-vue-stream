@@ -1,7 +1,7 @@
 {
   "name": "cf-worker-vue-stream",
   "version": "1.0.0",
-  "description": "Cloudflare Vuejs SSR Stream",
+  "description": "Cloudflare Workers Vuejs SSR Stream",
   "type": "module",
   "scripts": {
     "dev": "vite",

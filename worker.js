@@ -15,7 +15,6 @@ function renderPreloadLinks(modules, manifest) {
       files.forEach(file => {
        seen.add(file)
           const filename = file.split(/[\\/]/).pop()
-          console.log('FILENAME ', filename)
           if (manifest[filename]) {
             for (const depFile of manifest[filename]) {
               links += renderPreloadLink(depFile)
