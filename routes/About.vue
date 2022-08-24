@@ -26,7 +26,7 @@ useHead({
 
 <template>
   <div class="wrapper">
-    Demo Vuejs SSR transformstream on Cloudflare Workers 
+    Demo Vuejs SSR TransformStream on Cloudflare Workers 
   </div>
 </template>
 

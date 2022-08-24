@@ -8,10 +8,11 @@ import { createHead } from '@vueuse/head'
 // fresh store here.
 
 export function createApp() {
+  const head = createHead()
   const app = createSSRApp(App)
   const router = createRouter()
-  const head = createHead()
-  app.use(router)
   app.use(head)
+  app.use(router)
+ 
   return { app, router, head }
 }

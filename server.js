@@ -1,4 +1,4 @@
-import { pipeToWebWritable, renderToString } from 'vue/server-renderer'
+import { pipeToWebWritable } from 'vue/server-renderer'
 import { createApp } from './main'
 import { renderHeadToString } from '@vueuse/head'
 
@@ -37,14 +37,14 @@ function renderPreloadLink(file) {
 
 export async function render(url, manifest, template) {
   const { app, router, head } = createApp()
-  // console.log('head ', app._context.config.globalProperties['$head'].headTags)
-  await router.push(url)
-  
+  // set the router to the desired URL before rendering
+  router.push(url)
   await router.isReady()
   const ctx = {}
-  // Workarround SSR head : (
-  await renderToString(app)
-  const { headTags } =  await renderHeadToString(head)
+  // await renderToString(app) // Workaround to get head  <meta name="head:count" content="0"> 
+  const { headTags } =  renderHeadToString(head)
+  // console.log('headTags', headTags)
+
   const tmpl = template.split('<!--app-->')
  
   const prepend = tmpl[0].replace(`<!--head-->`, headTags)
