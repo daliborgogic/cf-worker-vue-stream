@@ -77,7 +77,7 @@ button {
 }
 #nprogress {
   pointer-events: none;
-  background: rgb(var(--brand-color));
+  background: rgb(var(--color));
   position: fixed;
   z-index: 1031;
   top: 0;
