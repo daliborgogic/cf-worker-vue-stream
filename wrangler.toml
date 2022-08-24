@@ -1,0 +1,8 @@
+name = "stream"
+compatibility_date = "2022-08-19"
+workers_dev = true
+main = "worker.js"
+compatibility_flags = [ "streams_enable_constructors", "transformstream_enable_standard_constructor" ]
+
+[assets]
+bucket = "./dist/client"
