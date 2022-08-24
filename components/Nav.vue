@@ -7,8 +7,6 @@
 
 <style scoped lang="postcss">
 nav {
-  position: sticky;
-  top: 0;
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
