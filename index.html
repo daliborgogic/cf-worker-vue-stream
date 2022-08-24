@@ -8,10 +8,6 @@
   </head>
   <body>
     <div id="app"><!--app--></div>
-    <script type="module">
-      import { createApp } from './main.js'
-      const { app, router } = createApp()
-      router.isReady().then(() => app.mount('#app'))
-    </script>
+    <script type="module" src="/client.js"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@
     "publish": "npm run build && npx rename-cli dist/client/index.html template.html && wrangler publish worker.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --ssrManifest --outDir dist/client",
-    "build:server": "vite build --ssr main.js --outDir dist/server",
+    "build:server": "vite build --ssr server.js --outDir dist/server",
     "preview": "npm run build && npx rename-cli dist/client/index.html template.html && wrangler dev --local worker.js"
   },
   "repository": {
