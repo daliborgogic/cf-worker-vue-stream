@@ -74,7 +74,7 @@ async function handleRequest(request) {
   return new Response(readable, {
     headers: {
       'content-type': 'text/html;charset=UTF-8',
-      'cache-control': 'no-store, must-revalidate',
+      'cache-control': 'no-cache',
       link
     }
   })
