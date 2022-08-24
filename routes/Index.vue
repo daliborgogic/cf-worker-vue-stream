@@ -1,8 +1,10 @@
 <script setup>
+import { computed} from 'vue'
 import { useHead } from '@vueuse/head'
+const { data } = await (await fetch('https://catfact.ninja/facts?limit=10')).json()
 
 useHead({
-  title: 'Index',
+  title: computed(() => data[0].fact),
   meta: [
     {
       name: 'description',
@@ -26,14 +28,22 @@ useHead({
 
 <template>
   <div class="wrapper">
-    Index
+    <h1>Cat Facts</h1>
+    <ul v-if="Boolean(data.length)">
+      <li v-for="{ fact }, key in data" :key="key" v-text="fact" />
+    </ul>
   </div>
 </template>
 
 <style scoped lang="postcss">
+
 .wrapper {
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin:0 auto;
   padding: 0 var(--gap);
+}
+h1 {
+  font-size: 40px;
+  font-weight: 800;
 }
 </style>
