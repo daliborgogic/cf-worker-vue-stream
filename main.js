@@ -7,14 +7,14 @@ import { createHead } from '@vueuse/head'
 const head = createHead()
 
 function createApp() {
+ 
   const router = createRouter()
  
   const app = (import.meta.env.SSR ? createSSRApp : _createApp)({
     render: () => h(App)
   })
-  app.use(router)
   app.use(head)
- 
+  app.use(router)
   return { app, router, head }
 }
 
