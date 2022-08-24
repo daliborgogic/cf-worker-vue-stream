@@ -2,7 +2,7 @@
 import { start, done, configure } from 'nprogress'
 // import vGrid from './components/Grid.vue'
 import vNav from './components/Nav.vue'
-configure({ trickle: false, showSpinner: false })
+configure({ trickle: true, showSpinner: false })
 </script>
 
 <template>
@@ -77,9 +77,11 @@ button {
 }
 #nprogress {
   pointer-events: none;
+}
+[role=bar] {
   background: rgb(var(--color));
   position: fixed;
-  z-index: 1031;
+  z-index: 10;
   top: 0;
   left: 0;
   width: 100%;
