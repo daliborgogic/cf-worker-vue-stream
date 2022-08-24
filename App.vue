@@ -9,15 +9,13 @@ configure({ trickle: true, showSpinner: false })
   <vNav />
   <main>
     <RouterView v-slot="{ Component, route }">
-      <template v-if="Component">
-        <Transition name="fade" mode="out-in">
-          <!-- <KeepAlive> -->
-          <Suspense @pending="start" @resolve="done">
-            <Component :is="Component" :key="route.path" />
-          </Suspense>
-          <!-- </KeepAlive> -->
-        </Transition>
-      </template>
+      <Transition name="fade" mode="out-in">
+        <!-- <KeepAlive> -->
+        <Suspense @pending="start" @resolve="done">
+          <Component :is="Component" :key="route.path" />
+        </Suspense>
+        <!-- </KeepAlive> -->
+      </Transition>
     </RouterView>
   </main>
 </template>

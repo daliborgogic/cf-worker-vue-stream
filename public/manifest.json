@@ -1,0 +1,22 @@
+{
+  "background_color": "#ffffff",
+  "description": "...",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "IPS",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "stream",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "data:image/png;base64,iVBORw0KGgo=",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ]
+}

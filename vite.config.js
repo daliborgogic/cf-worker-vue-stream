@@ -1,4 +1,4 @@
-import { splitVendorChunkPlugin } from 'vite'
+// import { splitVendorChunkPlugin } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 
 export default {
@@ -7,7 +7,7 @@ export default {
     vuePlugin({
       reactivityTransform: true
     }),
-    splitVendorChunkPlugin()
+    // splitVendorChunkPlugin()
   ],
   resolve: {
     dedupe: ['vue', 'vue-router', '@vueuse/head'],
