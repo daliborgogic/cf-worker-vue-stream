@@ -1,10 +1,18 @@
-import { pipeToWebWritable } from 'vue/server-renderer'
+import { pipeToWebWritable, renderToString } from 'vue/server-renderer'
 import { createApp } from './main'
 import { renderHeadToString } from '@vueuse/head'
 
 function renderPreloadLinks(modules, manifest) {
   let links = ''
   const seen = new Set()
+  for (const [key, value] of Object.entries(manifest)) {
+    if (key.startsWith('node_modules')) {
+      if (!links.includes(value)) {
+        console.log(value[0])
+        links += renderPreloadLink(value[0])
+      }
+    }
+  }
   modules.forEach(id => {
     const files = manifest[id]
     if (files) {
@@ -41,16 +49,14 @@ export async function render(url, manifest, template) {
   router.push(url)
   await router.isReady()
   const ctx = {}
-  // await renderToString(app) // Workaround to get head  <meta name="head:count" content="0"> 
+  await renderToString(app) // Workaround to get head  <meta name="head:count" content="0"> 
   const { headTags } = renderHeadToString(head)
-  // console.log('headTags', headTags)
 
   const tmpl = template.split('<!--app-->')
  
   const prepend = tmpl[0].replace(`<!--head-->`, headTags)
   const append = tmpl[1]
   const encoder = new TextEncoder()
-
   const { readable, writable } = new TransformStream({
     start(controller) {
       controller.enqueue(encoder.encode(prepend))

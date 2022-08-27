@@ -14,7 +14,7 @@ async function handleRequest(request) {
     headers: {
       'content-type': 'text/html;charset=UTF-8',
       'cache-control': 'no-cache',
-      link // 103 Early Hints 🚀
+      link: `</inter.woff2>; rel=preload; as=font; crossorigin, ${link}`// 103 Early Hints 🚀
     }
   })
 }

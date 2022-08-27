@@ -1,5 +1,7 @@
-// import { splitVendorChunkPlugin } from 'vite'
+import { splitVendorChunkPlugin } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
+
+const external = ['vue', 'vue-router', 'nprogress', '@vueuse/head']
 
 export default {
   dev: false,
@@ -7,10 +9,15 @@ export default {
     vuePlugin({
       reactivityTransform: true
     }),
-    // splitVendorChunkPlugin()
+    splitVendorChunkPlugin(),
+    {
+      configResolved(config) {
+        config.ssr.external = external
+      }
+    }
   ],
   resolve: {
-    dedupe: ['vue', 'vue-router', '@vueuse/head'],
+    dedupe: external
   },
   build: {
     minify: true
@@ -20,6 +27,6 @@ export default {
   },
   ssr: {
     target: 'webworker',
-    noExternal: false
+    noExternal: true
   }
 }

@@ -1,5 +1,8 @@
 <script setup>
-import { useHead } from '@vueuse/head'
+import { useHead, injectHead } from '@vueuse/head'
+
+const head = injectHead()
+const headTags = await head.headTags
 
 useHead({
   title: 'About',
@@ -26,7 +29,8 @@ useHead({
 
 <template>
   <div class="wrapper">
-    Demo Vuejs SSR TransformStream on Cloudflare Workers 
+    <h1>Demo Vuejs SSR TransformStream on Cloudflare Workers </h1>
+    <p>...</p>
   </div>
 </template>
 
@@ -35,5 +39,14 @@ useHead({
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--gap);
+}
+h1 {
+  font-size: 24px;
+  font-weight: 800;
+  padding-bottom: 20px;
+}
+h2 {
+  font-size: 24px;
+  padding-bottom: 20px;
 }
 </style>

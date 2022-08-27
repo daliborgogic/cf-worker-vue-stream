@@ -7,9 +7,9 @@ import { createHead } from '@vueuse/head'
 // that creates a fresh app instance. If using Vuex, we'd also be creating a
 // fresh store here.
 export function createApp() {
+  const head = createHead()
   const app = (import.meta.env.SSR ? createSSRApp : _createApp)(App)
   const router = createRouter()
-  const head = createHead()
   app.use(head)
   app.use(router)
  

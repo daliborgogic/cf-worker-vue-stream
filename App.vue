@@ -21,6 +21,13 @@ configure({ trickle: true, showSpinner: false })
 </template>
 
 <style lang="postcss">
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/inter.woff2) format('woff2');
+}
 :root {
   --brand-color: 0 0 0;
   --background-color: 255 255 255;
