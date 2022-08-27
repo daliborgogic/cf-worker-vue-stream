@@ -8,14 +8,12 @@
 ### Cloudflare’s Early Hints
 
 - Sign in to your Cloudflare Account
-- In the dashboard, navigate to [Speed tab](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization#sxg-card)
-- Click on the Optimization section
-
-
+- In the dashboard, navigate to Speed tab
+- Click on the Optimization section > Optimized Delivery > Early Hints
 
 ```bash
 curl url -I https://transformstream.dlbr.dev/
-HTTP/2 103 
+HTTP/2 103
 link: </inter.woff2>; as=font; crossorigin; rel=preload, </assets/vendor.74894c8f.js>; as=script; crossorigin; rel=preload, </assets/Index.e1c90fc8.js>; as=script; crossorigin; rel=preload, </assets/Index.ed2abc71.css>; as=style; rel=preload
 
 HTTP/2 200 
